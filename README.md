@@ -26,7 +26,7 @@ Key artifacts:
 The repository's main structure consists of four task folders, each holding a self-contained deliverable for one activity in the program:
 
 - **blackbird_react_Task/** — Create React App project; logo/link update shipped via PR workflow
-- **blackbird-harrison-ai/** — React 17 + MUI login-page simulation; validation logic and tests (nested git repo, upstream `juliusarden/blackbird-harrison-ai`)
+- **blackbird-harrison-ai/** — React 17 + MUI login-page simulation; validation logic and tests (work originally done on branch `JonSolis` of `Alexander040105/blackbird-harrison-ai`, upstream `juliusarden/blackbird-harrison-ai`; source vendored here alongside the submission zip)
 - **AB_Test_task/** — A/B test experiment proposal (markdown source + Word deliverable + blank template)
 - **blackbird_arduino_task_solis/** — Arduino sketch + Wokwi circuit diagram for the temperature warning system
 
@@ -36,9 +36,11 @@ BlackBird-Forage-SoftwareEngineering/
 │   ├── AB_Test_Proposal.md                                  # experiment proposal (source)
 │   ├── BTest_Template.md                                    # blank proposal template
 │   └── Experiment Proposal_OnboardingFunnel_Solis.docx      # submitted deliverable
-├── blackbird-harrison-ai/                                   # nested git repo (upstream: juliusarden/blackbird-harrison-ai)
-│   ├── jonSolis-blackbirdSimulation.zip                     # submission: src/, LoginForm/, tests
-│   ├── package.json                                         # "login-page" — React 17, MUI, email-validator
+├── blackbird-harrison-ai/                                   # "login-page" app (vendored; history lives on fork repo)
+│   ├── src/components/LoginForm/                            # validateEmail/validatePassword + unit tests
+│   ├── public/
+│   ├── jonSolis-blackbirdSimulation.zip                     # original submission package
+│   ├── package.json                                         # React 17, MUI, email-validator
 │   └── README.md                                            # npm install / start / test
 ├── blackbird_arduino_task_solis/
 │   ├── ntc-basic.ino                                        # NTC thermistor → 3-LED warning sketch
@@ -75,7 +77,7 @@ Across the four activities, the program exercised the breadth of a start-up engi
 - Simulated a Harrison.ai front-end codebase ("login-page") — a React 17 + Material-UI login form.
 - Implemented `validateEmail` (via `email-validator`) and `validatePassword`, enforcing a real-world password policy: minimum 8 characters, at least one uppercase and one lowercase letter, one digit, and one special character.
 - Wired validation into the `LoginForm` submit handler with inline field errors and a success snackbar; coverage provided by `validateForm.test.js` and `LoginForm.test.js`.
-- This folder is a nested git repository (upstream `juliusarden/blackbird-harrison-ai`, work on branch `JonSolis`); the graded submission is packaged as [jonSolis-blackbirdSimulation.zip](blackbird-harrison-ai/jonSolis-blackbirdSimulation.zip).
+- Work was done on branch `JonSolis` of the fork `Alexander040105/blackbird-harrison-ai` (upstream `juliusarden/blackbird-harrison-ai`); the graded submission is packaged as [jonSolis-blackbirdSimulation.zip](blackbird-harrison-ai/jonSolis-blackbirdSimulation.zip), with the same sources vendored directly in this folder.
 - Run locally: `cd blackbird-harrison-ai && npm install && npm test` (then `npm start`)
 
 [Screenshot: login form with validation error states]
@@ -105,8 +107,8 @@ Based on the work above, the following improvements are noted for future iterati
 
 - **Arduino sketch (`ntc-basic.ino`):** LEDs are only ever written `HIGH` and never cleared, so they latch on cumulatively as temperature rises — each loop should explicitly write all three outputs (`HIGH` for the active band, `LOW` otherwise). Related: the band check `celsius < 30 || celsius <= 80` works today only by accident of the `else if` ordering; it should read `celsius >= 30 && celsius <= 80`.
 - **`command.sh` completeness:** the file currently documents only the branch/commit/push/PR steps — consider restoring the full history (`npx create-react-app`, `gh repo create`, `gh pr merge`) so it covers steps 1–8 as the task requires.
-- **`blackbird-harrison-ai` nesting:** as a nested git repo, git will only track it as a gitlink — either keep the submission zip as the canonical artifact or vendor the extracted sources if they should be tracked here.
-- **Repo hygiene:** `node_modules/` exists inside two task folders — add a root `.gitignore` covering `node_modules/` before committing them.
+- **`blackbird-harrison-ai` provenance:** the folder has been flattened into normal tracked files (the submission zip extracted beside it); its commit history remains on the fork repo — keep this repo's vendored copy in sync if that codebase evolves further.
+- **Duplicate docs:** `blackbird_react_Task/README.md` and `blackbird-harrison-ai/README.md` still contain the stock create-react-app boilerplate — consider trimming them to a short "how to run" note each so the sub-READMEs don't compete with this top-level one.
 
 ## Assumptions and Caveats
 
@@ -114,5 +116,5 @@ Throughout the program, the following assumptions and limitations apply:
 
 - The Arduino system was validated in the Wokwi simulator only — behavior on physical hardware (sensor tolerances, real thermistor beta value) is unverified.
 - The A/B proposal's +15% lift target is a hypothesized minimum detectable effect; no experiment was actually run and no real funnel data exists behind the proposal.
-- `blackbird-harrison-ai` source code lives inside the submission zip and its own nested `.git` — it is not tracked as normal files by this repository.
+- `blackbird-harrison-ai` was vendored into this repository after the fact — its git history lives on `Alexander040105/blackbird-harrison-ai` (fork of `juliusarden/blackbird-harrison-ai`), not here.
 - The sprint retrospective activity was completed on the Forage platform and has no file artifact in this repository.
