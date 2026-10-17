@@ -59,7 +59,6 @@ BlackBird-Forage-SoftwareEngineering/
 
 Across the four activities, the program exercised the breadth of a start-up engineer's job: shipping changes through a real git/GitHub PR workflow, writing and verifying feature code with tests, thinking like a product manager through a formal experiment proposal, and reaching down the stack into embedded hardware. Each activity produced a verifiable artifact — a merged pull request, a tested validation module, a written experiment proposal, and a runnable circuit simulation.
 
-[Screenshot: collage of the React app, proposal docx, and Wokwi simulation]
 
 ## Insights Deep Dive
 
@@ -70,7 +69,6 @@ Across the four activities, the program exercised the breadth of a start-up engi
 - The complete command sequence is documented in [command.sh](blackbird_react_Task/command.sh) for reproducibility.
 - Run locally: `cd blackbird_react_Task && npm install && npm start`
 
-[Screenshot: React app rendering the Propeller Aero logo]
 
 ### Task 2 — Harrison.ai Login Validation (`blackbird-harrison-ai/`)
 
@@ -80,7 +78,6 @@ Across the four activities, the program exercised the breadth of a start-up engi
 - Work was done on branch `JonSolis` of the fork `Alexander040105/blackbird-harrison-ai` (upstream `juliusarden/blackbird-harrison-ai`); the graded submission is packaged as [jonSolis-blackbirdSimulation.zip](blackbird-harrison-ai/jonSolis-blackbirdSimulation.zip), with the same sources vendored directly in this folder.
 - Run locally: `cd blackbird-harrison-ai && npm install && npm test` (then `npm start`)
 
-[Screenshot: login form with validation error states]
 
 ### Task 3 — A/B Test Experiment Proposal (`AB_Test_task/`)
 
@@ -90,7 +87,7 @@ Across the four activities, the program exercised the breadth of a start-up engi
 - Hypothesis grounded in cited external data: LinkedIn's profile-photo engagement stats, the ICWSM/Flickr study on filtered-photo engagement (+21% views, +45% comments), and the Inner Circle onboarding funnel case study.
 - Deliverable: [Experiment Proposal_OnboardingFunnel_Solis.docx](<AB_Test_task/Experiment Proposal_OnboardingFunnel_Solis.docx>)
 
-[Screenshot: proposal document, Variations Design section]
+
 
 ### Task 4 — IoT Temperature Warning System (`blackbird_arduino_task_solis/`)
 
@@ -99,7 +96,8 @@ Across the four activities, the program exercised the breadth of a start-up engi
 - `diagram.json` defines the simulated circuit: Arduino Uno + half breadboard, NTC sensor, and three LEDs with 1 kΩ current-limiting resistors.
 - Fully simulated — try it at [wokwi.com/projects/478137996920966145](https://wokwi.com/projects/478137996920966145)
 
-[Screenshot: Wokwi simulation with lit LED]
+<img width="411" height="410" alt="image" src="https://github.com/user-attachments/assets/85b9883d-a7fb-412a-b7ba-ef92fc3af189" />
+
 
 ## Recommendations
 
